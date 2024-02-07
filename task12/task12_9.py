@@ -20,17 +20,16 @@
 k = 0
 maxx = 30
 
-for x in range(40):
-    for y in range(40):
-        for z in range(40):
-            s = "\\" * z + "@" * x + "$" * y
+for x in range(100):
 
-            while "@$" in s or "\@" in s or "\$" in s:
-                s = s.replace("@$", "$@", 1)
+    s = "\\" * x + "@" * x + "$" * x
 
-                s = s.replace("\@", "@\\", 1)
+    while "@$" in s or "\@" in s or "\$" in s:
+        s = s.replace("@$", "$@", 1)
 
-                s = s.replace("\$", "$\\", 1)
-            if x + y + z > maxx and s[29] == "@":
-                maxx = x + y + z
+        s = s.replace("\@", "@\\", 1)
+
+        s = s.replace("\$", "$\\", 1)
+    if x * 3 > maxx and s[29] == "@":
+        maxx = x * 3
 print(maxx)
