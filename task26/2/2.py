@@ -1,0 +1,1 @@
+with open("task2.txt") as f:
