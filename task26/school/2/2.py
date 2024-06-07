@@ -28,9 +28,9 @@ with open("data.txt") as f:
         rate_dict["avg"] = sum(rate_list) / len(rate_list)
 
         rate_dict["med"] = rate_list[len(rate_list) // 2] if len(rate_list) % 2 != 0 \
-            else (rate_list[len(rate_list) // 2] + rate_list[len(rate_list) // 2 - 1]) / 2
+            else (rate_list[len(rate_list) // 2] + rate_list[len(rate_list) // 2 - 1]) // 2
         min_avg = min(rate_dict["avg"], min_avg)
-        print(rate_dict["med"], rate_dict["avg"])
+
         delta = abs(rate_dict["med"] - rate_dict["avg"])
         if delta >= max_delta:
             if max_delta == delta:
@@ -38,4 +38,5 @@ with open("data.txt") as f:
             else:
                 max_delta_id = rate_id
             max_delta = delta
+        print(rate_id, delta, rate_dict["avg"], rate_dict["med"])
     print(int(min_avg), max_delta_id)
